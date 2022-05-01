@@ -2,8 +2,15 @@
 
 const express = require("express");
 const routes = require("./routes")
+const db = require("./database");
+const cors = require("cors");
+
 const api = express();
 
+db.checkConnection();
+
+api.use(cors());
+api.use(express.json()); //habilitando a manipulaçao de json
 api.use(routes);
 
 
